@@ -1,23 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   color-scheme: light;
+  --background: 0 0% 100%;
+  --foreground: 224 71% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 224 71% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71% 4%;
+  --primary: 250 95% 63%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 226 100% 97%;
+  --secondary-foreground: 226 43% 15%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 46%;
+  --accent: 221 100% 96%;
+  --accent-foreground: 221 43% 16%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 250 95% 63%;
+  --radius: 0.75rem;
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Inter", "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
+::selection {
+  @apply bg-primary/20;
 }
