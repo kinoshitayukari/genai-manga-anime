@@ -30,6 +30,7 @@ const navItems = [
   { href: "#program", label: "プログラム" },
   { href: "#pricing", label: "料金" },
   { href: "#curriculum", label: "カリキュラム" },
+  { href: "/articles", label: "記事一覧" },
   { href: "#apply", label: "申込" },
 ] as const;
 
@@ -280,6 +281,12 @@ export default function MangaAISchoolLP() {
                 <a href="#pricing" className="flex items-center gap-2">
                   <ArrowRight className="h-5 w-5" />
                   料金を見る
+                </a>
+              </Button>
+              <Button asChild variant="ghost" size="lg" className="rounded-2xl px-6">
+                <a href="/articles" className="flex items-center gap-2">
+                  <ArrowRight className="h-5 w-5" />
+                  記事一覧をみる
                 </a>
               </Button>
             </div>
