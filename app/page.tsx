@@ -181,6 +181,30 @@ const heroBadges = [
   "商業利用・副業の収益化支援",
 ] as const;
 
+const heroMetrics = [
+  {
+    icon: <Star className="h-4 w-4 text-white" />,
+    label: "受講満足度",
+    value: "97%",
+    description: "ライブ添削とレビューで納得",
+    gradient: "from-indigo-500 via-violet-500 to-fuchsia-500",
+  },
+  {
+    icon: <TimerReset className="h-4 w-4 text-white" />,
+    label: "制作時間削減",
+    value: "-80%",
+    description: "AIワークフローの標準化",
+    gradient: "from-cyan-500 via-sky-500 to-blue-500",
+  },
+  {
+    icon: <MessageSquare className="h-4 w-4 text-white" />,
+    label: "伴走サポート",
+    value: "24/7",
+    description: "Slack/Discordコミュニティ",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+  },
+] as const;
+
 const webinarHighlights = [
   "市場機会とポジショニング",
   "AI×作画ワークフロー実演",
@@ -250,9 +274,11 @@ export default function MangaAISchoolLP() {
       </header>
 
       <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-60 mask-radial-fade" />
         <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-200/40 blur-3xl" />
         <div className="pointer-events-none absolute top-1/3 right-0 h-64 w-64 translate-x-1/3 rounded-full bg-cyan-200/30 blur-3xl" />
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-600 shadow-sm ring-1 ring-indigo-500/10">
               <Sparkles className="h-3.5 w-3.5" /> Manga × Generative AI
@@ -293,23 +319,26 @@ export default function MangaAISchoolLP() {
             </div>
           </motion.div>
           <motion.div
-            className="relative"
+            className="relative flex flex-col gap-6 md:min-h-[28rem]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="relative h-full rounded-3xl border border-white/80 bg-white/80 p-8 shadow-xl backdrop-blur">
-              <div className="absolute -top-6 left-6 flex items-center gap-2 rounded-full bg-indigo-600 px-3 py-1 text-xs font-medium text-white shadow-lg">
+            <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-white/80 p-8 shadow-2xl backdrop-blur-lg">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white via-white/80 to-indigo-50/60" />
+              <div className="pointer-events-none absolute -top-24 right-10 h-48 w-48 rounded-full bg-indigo-200/40 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-20 left-4 h-40 w-40 rounded-full bg-cyan-200/50 blur-3xl" />
+              <div className="absolute -top-6 left-6 z-20 flex items-center gap-2 rounded-full bg-indigo-600 px-3 py-1 text-xs font-medium text-white shadow-lg">
                 <Sparkles className="h-3.5 w-3.5" /> Demo Workflow
               </div>
-              <div className="flex flex-col gap-4 text-sm text-slate-600">
+              <div className="relative z-10 flex flex-col gap-5 text-sm text-slate-600">
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">AI×作画ワークフロー可視化</h3>
+                  <h3 className="text-lg font-semibold text-slate-900">AI×作画ワークフロー可視化</h3>
                   <p className="mt-1 leading-relaxed">
                     ネーム→ラフ→線画→仕上げの自動化ポイントを、プロジェクトボード形式で学習。
                   </p>
                 </div>
-                <div className="grid gap-3 rounded-2xl bg-slate-50/80 p-4 shadow-inner">
+                <div className="grid gap-3 rounded-2xl bg-slate-50/90 p-4 shadow-inner">
                   <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-slate-500">
                     <span>Pipeline Snapshot</span>
                     <span>稼働率 82%</span>
@@ -334,12 +363,38 @@ export default function MangaAISchoolLP() {
                 </div>
               </div>
             </div>
+            <div className="flex flex-col gap-4 md:absolute md:bottom-4 md:right-0 md:w-64">
+              {heroMetrics.map((metric, index) => (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 + index * 0.1 }}
+                  className="relative overflow-hidden rounded-2xl border border-white/30 bg-slate-900/95 text-white shadow-2xl"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${metric.gradient} opacity-90`} />
+                  <div className="relative flex items-center justify-between gap-3 px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-9 w-9 place-items-center rounded-full border border-white/40 bg-white/10 backdrop-blur">
+                        {metric.icon}
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-wide text-white/80">{metric.label}</p>
+                        <p className="text-lg font-semibold text-white">{metric.value}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="relative border-t border-white/30 px-4 py-2 text-xs text-white/90">{metric.description}</div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section id="features" className="border-b border-border/60 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section id="features" className="relative border-b border-border/60 bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-grid-soft opacity-40 mask-radial-fade" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-col gap-3 text-center md:text-left">
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Why now</span>
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">なぜ今、漫画×生成AIなのか</h2>
@@ -365,8 +420,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="program" className="border-b border-border/60 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section id="program" className="relative border-b border-border/60 bg-gradient-to-b from-white via-slate-50 to-white">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="grid gap-8 md:grid-cols-3">
             {programHighlights.map((highlight) => (
               <Card key={highlight.title} className="h-full border-none bg-white/90 shadow-lg">
@@ -385,8 +441,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="usecases" className="border-b border-border/60 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section id="usecases" className="relative border-b border-border/60 bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-50/50 via-transparent to-cyan-50/60" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="grid gap-6 md:grid-cols-2 md:items-center">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Use cases</span>
@@ -415,8 +472,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="pricing" className="border-b border-border/60 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section id="pricing" className="relative border-b border-border/60 bg-gradient-to-b from-slate-50 via-white to-slate-100">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.15),_transparent_65%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-col gap-3 text-center">
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Pricing</span>
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">料金プラン</h2>
@@ -460,8 +518,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="curriculum" className="border-b border-border/60 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section id="curriculum" className="relative border-b border-border/60 bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-grid-soft opacity-30" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-col gap-3 text-center md:text-left">
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Curriculum</span>
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">カリキュラム（抜粋）</h2>
@@ -485,8 +544,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section className="border-b border-border/60 bg-slate-50">
-        <div className="mx-auto max-w-6xl gap-6 px-4 py-16 md:grid md:grid-cols-3 md:items-start">
+      <section className="relative border-b border-border/60 bg-gradient-to-br from-slate-50 via-white to-indigo-50/60">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+        <div className="relative mx-auto max-w-6xl gap-6 px-4 py-16 md:grid md:grid-cols-3 md:items-start">
           <div className="md:col-span-1">
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">講師・監修</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -511,8 +571,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="apply" className="border-b border-border/60 bg-gradient-to-br from-indigo-50 via-white to-sky-50">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2">
+      <section id="apply" className="relative border-b border-border/60 bg-gradient-to-br from-indigo-50 via-white to-sky-50">
+        <div className="pointer-events-none absolute inset-0 bg-grid-soft opacity-40" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2">
           <div>
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Webinar</span>
             <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
@@ -556,8 +617,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section className="border-b border-border/60 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section className="relative border-b border-border/60 bg-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(129,140,248,0.14),_transparent_60%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="grid gap-6 md:grid-cols-3">
             <Card className="border-none bg-slate-50 shadow-md">
               <CardHeader>
@@ -602,8 +664,9 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section className="border-b border-border/60 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-16">
+      <section className="relative border-b border-border/60 bg-slate-50">
+        <div className="pointer-events-none absolute inset-0 bg-grid-soft opacity-35" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
           <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">よくある質問</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {faqs.map((faq) => (

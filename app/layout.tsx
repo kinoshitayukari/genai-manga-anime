@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const notoSans = Noto_Sans_JP({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "漫画特化 生成AIスクール",
@@ -11,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className="min-h-screen">
+      <body className={`${inter.variable} ${notoSans.variable} min-h-screen font-sans antialiased`}>
         {children}
       </body>
     </html>
