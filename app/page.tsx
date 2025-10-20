@@ -30,6 +30,7 @@ const navItems = [
   { href: "#program", label: "プログラム" },
   { href: "#pricing", label: "料金" },
   { href: "#curriculum", label: "カリキュラム" },
+  { href: "/articles", label: "記事一覧" },
   { href: "#apply", label: "申込" },
 ] as const;
 
@@ -508,6 +509,25 @@ export default function MangaAISchoolLP() {
               ))}
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      <section className="border-b border-border/60 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center">
+          <div className="mx-auto max-w-2xl space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">記事一覧</h2>
+            <p className="text-base leading-relaxed text-slate-600">
+              生成AIや漫画制作に役立つ知識・実践ノウハウをまとめた記事を公開しています。まずは最新情報をチェックして、スクールの雰囲気を感じてみてください。
+            </p>
+            <div className="flex items-center justify-center">
+              <Button asChild size="lg" className="rounded-2xl px-6">
+                <a href="/articles" className="flex items-center gap-2">
+                  <ArrowRight className="h-5 w-5" />
+                  記事一覧を見る
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
