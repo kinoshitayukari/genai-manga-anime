@@ -25,28 +25,57 @@ import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+const navItems = [
+  { href: "#features", label: "特徴" },
+  { href: "#program", label: "プログラム" },
+  { href: "#pricing", label: "料金" },
+  { href: "#curriculum", label: "カリキュラム" },
+  { href: "#apply", label: "申込" },
+] as const;
+
 const features = [
   {
-    icon: <Brush className="w-6 h-6" />,
+    icon: <Brush className="h-6 w-6 text-indigo-600" />,
     title: "漫画×AIに完全特化",
     desc: "国内初*の漫画制作特化AIカリキュラム。技術×作画×演出を統合。",
   },
   {
-    icon: <Zap className="w-6 h-6" />,
+    icon: <Zap className="h-6 w-6 text-indigo-600" />,
     title: "制作時間 80%削減",
     desc: "ワークフロー最適化でネーム→仕上げまで高速化。",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6" />,
+    icon: <ShieldCheck className="h-6 w-6 text-indigo-600" />,
     title: "著作権・コンプラ対応",
     desc: "専門家監修の最新ガイドラインを提供。安心して商用へ。",
   },
   {
-    icon: <LineChart className="w-6 h-6" />,
+    icon: <LineChart className="h-6 w-6 text-indigo-600" />,
     title: "収益化に直結",
     desc: "案件獲得・連載提案・同人/Booth/海外展開まで戦略設計。",
   },
-];
+] as const;
+
+const programHighlights = [
+  {
+    icon: <GraduationCap className="h-5 w-5 text-indigo-600" />,
+    title: "成果保証型",
+    description:
+      "商業レベルの作品集制作をコミット。修了基準を明確化し、未達時の再受講サポートを用意。",
+  },
+  {
+    icon: <Users className="h-5 w-5 text-indigo-600" />,
+    title: "現役プロの直接指導",
+    description:
+      "少人数ライブ添削とSlack/Discordでの常時フィードバック。作品の魅せ方まで徹底伴走。",
+  },
+  {
+    icon: <TimerReset className="h-5 w-5 text-indigo-600" />,
+    title: "8〜12週間で実務化",
+    description:
+      "ネーム・演出・仕上げ・法務・営業を短期集中的に統合。即戦力スキルを獲得します。",
+  },
+] as const;
 
 const plans = [
   {
@@ -88,7 +117,7 @@ const plans = [
     ],
     cta: "相談する",
   },
-];
+] as const;
 
 const curriculum = [
   {
@@ -123,7 +152,41 @@ const curriculum = [
       "同人/連載/受託/海外販路の戦略",
     ],
   },
-];
+] as const;
+
+const useCases = [
+  {
+    title: "① クリエイティブを楽しむ（非商用）",
+    bullets: [
+      "オリジナル世界観の構築と連作づくり",
+      "縦読み/横読みの最適化テンプレ",
+      "SNS公開のコツと継続の仕組み化",
+    ],
+  },
+  {
+    title: "② 商業利用で利益を得る（収益化）",
+    bullets: [
+      "受託制作/案件獲得のフロー設計",
+      "同人・デジタル販売/Booth展開",
+      "連載提案・編集向け資料の作成",
+      "原価圧縮と利益率向上のワークフロー",
+    ],
+  },
+] as const;
+
+const heroBadges = [
+  "制作時間 最大80%削減",
+  "著作権ガイド付",
+  "商業レベル作品集を完成",
+  "商業利用・副業の収益化支援",
+] as const;
+
+const webinarHighlights = [
+  "市場機会とポジショニング",
+  "AI×作画ワークフロー実演",
+  "著作権リスクの回避策",
+  "受講後の収益化シナリオ",
+] as const;
 
 const faqs = [
   {
@@ -142,131 +205,158 @@ const faqs = [
     q: "未経験でも参加できますか？",
     a: "はい。基礎デッサンの補助教材、作画テンプレ、参考ネーム集を提供。スタンダードコースからの開始を推奨します。",
   },
-];
+] as const;
 
-const heroBadges = [
-  "制作時間 最大80%削減",
-  "著作権ガイド付",
-  "商業レベル作品集を完成",
-  "商業利用・副業の収益化支援",
-];
+const roadmap = [
+  "D1-10：講師契約・LMS/決済構築（MVP）",
+  "D11-20：教材制作・ウェビナー準備",
+  "D21-30：広告テスト→販売開始（M1：5件）",
+] as const;
+
+const kpis = [
+  "CPA：¥5,000 / CVR：4.0%",
+  "M3：月20件、M6：月30件",
+  "粗利率：80% / 年間利益率：75%+",
+] as const;
+
+const contacts = [
+  { icon: <Mail className="h-4 w-4" />, text: "contact@example.com" },
+  { icon: <Building2 className="h-4 w-4" />, text: "東京都〇〇区（登記予定）" },
+  { icon: <Laptop className="h-4 w-4" />, text: "オンライン完結／全国対応" },
+] as const;
 
 export default function MangaAISchoolLP() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 font-semibold">
-            <Sparkles className="w-5 h-5" />
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/65">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <Sparkles className="h-5 w-5" />
             <span>漫画特化AIスクール</span>
           </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#features" className="hover:underline">
-              特徴
-            </a>
-            <a href="#program" className="hover:underline">
-              プログラム
-            </a>
-            <a href="#pricing" className="hover:underline">
-              料金
-            </a>
-            <a href="#curriculum" className="hover:underline">
-              カリキュラム
-            </a>
-            <a href="#apply" className="hover:underline">
-              申込
-            </a>
+          <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="transition-colors hover:text-foreground">
+                {item.label}
+              </a>
+            ))}
           </nav>
-          <div className="flex gap-2">
-            <Button asChild className="rounded-2xl">
+          <div className="flex items-center gap-2">
+            <Button asChild className="rounded-2xl px-5">
               <a href="#apply">無料ウェビナー予約</a>
             </Button>
           </div>
         </div>
       </header>
 
-      <section className="relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
+      <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-200/40 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/3 right-0 h-64 w-64 translate-x-1/3 rounded-full bg-cyan-200/30 blur-3xl" />
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-600 shadow-sm ring-1 ring-indigo-500/10">
+              <Sparkles className="h-3.5 w-3.5" /> Manga × Generative AI
+            </span>
+            <h1 className="mt-4 text-3xl font-extrabold leading-tight text-slate-900 md:text-5xl">
               あなたの「描きたい」に寄り添う：
-              <span className="bg-yellow-200 px-2 rounded">漫画×生成AI</span>
+              <span className="rounded bg-yellow-200 px-2">漫画×生成AI</span>
               で
               <br className="hidden md:block" />
               楽しむ人も、仕事にする人も、
-              <span className="underline decoration-wavy">最短</span>
+              <span className="underline decoration-wavy decoration-indigo-400">最短</span>
               で前へ。
             </h1>
-            <p className="mt-5 text-lg text-gray-600">
-              国内初*の「漫画制作に完全特化」した生成AIスクール。現役プロの監修で、
-              ネームから仕上げ、収益化戦略までを一気通貫で習得。
+            <p className="mt-6 text-lg leading-relaxed text-slate-600">
+              国内初*の「漫画制作に完全特化」した生成AIスクール。現役プロの監修で、ネームから仕上げ、収益化戦略までを一気通貫で習得します。
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="rounded-2xl">
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="rounded-2xl px-6">
                 <a href="#apply" className="flex items-center gap-2">
-                  <PlayCircle className="w-5 h-5" />
+                  <PlayCircle className="h-5 w-5" />
                   無料ウェビナーを予約
                 </a>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="rounded-2xl"
-              >
+              <Button asChild variant="outline" size="lg" className="rounded-2xl px-6">
                 <a href="#pricing" className="flex items-center gap-2">
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="h-5 w-5" />
                   料金を見る
                 </a>
               </Button>
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-600">
               {heroBadges.map((badge) => (
-                <div key={badge} className="flex items-center gap-1">
-                  <CheckCircle2 className="w-4 h-4" />
-                  {badge}
+                <div key={badge} className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 shadow-sm">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                  <span>{badge}</span>
                 </div>
               ))}
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            className="relative"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-purple-50 to-blue-50 border grid place-items-center">
-              <div className="text-center p-6">
-                <div className="inline-flex items-center gap-2 text-sm text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
-                  <Sparkles className="w-4 h-4" /> Demo
+            <div className="relative h-full rounded-3xl border border-white/80 bg-white/80 p-8 shadow-xl backdrop-blur">
+              <div className="absolute -top-6 left-6 flex items-center gap-2 rounded-full bg-indigo-600 px-3 py-1 text-xs font-medium text-white shadow-lg">
+                <Sparkles className="h-3.5 w-3.5" /> Demo Workflow
+              </div>
+              <div className="flex flex-col gap-4 text-sm text-slate-600">
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900">AI×作画ワークフロー可視化</h3>
+                  <p className="mt-1 leading-relaxed">
+                    ネーム→ラフ→線画→仕上げの自動化ポイントを、プロジェクトボード形式で学習。
+                  </p>
                 </div>
-                <h3 className="mt-3 font-semibold">AI×作画ワークフロー可視化</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  ネーム→ラフ→線画→仕上げの自動化ポイントをダッシュボードで学習
-                </p>
+                <div className="grid gap-3 rounded-2xl bg-slate-50/80 p-4 shadow-inner">
+                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <span>Pipeline Snapshot</span>
+                    <span>稼働率 82%</span>
+                  </div>
+                  <div className="grid gap-2 text-sm text-slate-600">
+                    <div className="flex items-center justify-between rounded-xl bg-white px-3 py-2 shadow-sm">
+                      <span className="font-medium text-slate-900">ネーム生成</span>
+                      <span className="text-xs text-emerald-500">完了</span>
+                    </div>
+                    <div className="flex items-center justify-between rounded-xl bg-white px-3 py-2 shadow-sm">
+                      <span className="font-medium text-slate-900">作画 &amp; トーン</span>
+                      <span className="text-xs text-indigo-500">進行中</span>
+                    </div>
+                    <div className="flex items-center justify-between rounded-xl bg-white px-3 py-2 shadow-sm">
+                      <span className="font-medium text-slate-900">仕上げ &amp; 品質確認</span>
+                      <span className="text-xs text-slate-400">待機</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-dashed border-indigo-200/70 bg-white/60 p-4 text-xs leading-relaxed text-slate-500">
+                  AI補助の推奨モデル、否定プロンプト例、著作権チェックリストなどをテンプレ化。受講者は自分のワークフローに転用可能です。
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section id="features" className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl md:text-3xl font-bold">なぜ今、漫画×生成AIなのか</h2>
-          <p className="mt-2 text-gray-600">
-            市場拡大と制作現場の効率化ニーズが交差。先発優位を確立します。
-          </p>
-          <div className="mt-8 grid md:grid-cols-4 gap-4">
+      <section id="features" className="border-b border-border/60 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-col gap-3 text-center md:text-left">
+            <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Why now</span>
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">なぜ今、漫画×生成AIなのか</h2>
+            <p className="text-base leading-relaxed text-slate-600">
+              市場拡大と制作現場の効率化ニーズが交差。先発優位を確立するための知識と仕組みを体系化しました。
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-4">
             {features.map((feature) => (
-              <Card key={feature.title} className="rounded-2xl">
-                <CardHeader className="flex flex-row items-center gap-3">
-                  {feature.icon}
-                  <CardTitle className="text-base">{feature.title}</CardTitle>
+              <Card key={feature.title} className="h-full border-none bg-slate-50/80 shadow-md">
+                <CardHeader className="flex flex-row items-center gap-3 pb-2">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-inner">
+                    {feature.icon}
+                  </div>
+                  <CardTitle className="text-base text-slate-900">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm text-gray-600">
+                <CardContent className="pt-2 text-sm leading-relaxed text-slate-600">
                   {feature.desc}
                 </CardContent>
               </Card>
@@ -275,126 +365,115 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="program" className="border-t bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-3 gap-6">
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <GraduationCap className="w-5 h-5" /> 成果保証型
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-gray-600">
-              商業レベルの作品集制作をコミット。修了基準を明確化し、未達時の再受講サポートを用意。
-            </CardContent>
-          </Card>
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5" /> 現役プロの直接指導
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-gray-600">
-              少人数ライブ添削とSlack/Discordでの常時フィードバック。作品の魅せ方まで徹底伴走。
-            </CardContent>
-          </Card>
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TimerReset className="w-5 h-5" /> 8〜12週間で実務化
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-gray-600">
-              ネーム・演出・仕上げ・法務・営業を短期集中的に統合。即戦力スキルを獲得します。
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section id="usecases" className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl md:text-3xl font-bold">楽しむ人も、仕事にする人も</h2>
-          <p className="mt-2 text-gray-600">
-            目的別に最適なゴールを設定し、趣味の表現拡張から商業的な収益化まで伴走します。
-          </p>
-          <div className="grid md:grid-cols-2 gap-6 mt-6">
-            <Card className="rounded-2xl">
-              <CardHeader>
-                <CardTitle className="text-lg">① クリエイティブを楽しむ（非商用）</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-                  <li>オリジナル世界観の構築と連作づくり</li>
-                  <li>縦読み/横読みの最適化テンプレ</li>
-                  <li>SNS公開のコツと継続の仕組み化</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="rounded-2xl">
-              <CardHeader>
-                <CardTitle className="text-lg">② 商業利用で利益を得る（収益化）</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-                  <li>受託制作/案件獲得のフロー設計</li>
-                  <li>同人・デジタル販売/Booth展開</li>
-                  <li>連載提案・編集向け資料の作成</li>
-                  <li>原価圧縮と利益率向上のワークフロー</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl md:text-3xl font-bold">料金プラン</h2>
-          <p className="mt-2 text-gray-600">目的とレベルに応じて3つのプランをご用意。</p>
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {plans.map((plan) => (
-              <Card key={plan.name} className="rounded-2xl">
-                <CardHeader>
-                  <div className="text-xs inline-flex bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">
-                    {plan.badge}
+      <section id="program" className="border-b border-border/60 bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="grid gap-8 md:grid-cols-3">
+            {programHighlights.map((highlight) => (
+              <Card key={highlight.title} className="h-full border-none bg-white/90 shadow-lg">
+                <CardHeader className="flex items-start gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+                    {highlight.icon}
                   </div>
-                  <CardTitle className="mt-2 text-xl">{plan.name}</CardTitle>
+                  <CardTitle className="text-lg text-slate-900">{highlight.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-extrabold">
-                    {plan.price}
-                    <span className="text-base font-normal text-gray-500">（税込）</span>
-                  </div>
-                  <div className="text-sm text-gray-500 mt-1">{plan.duration}</div>
-                  <ul className="mt-4 space-y-2 text-sm text-gray-700">
-                    {plan.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 mt-0.5" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full mt-6 rounded-2xl">{plan.cta}</Button>
+                <CardContent className="pt-0 text-sm leading-relaxed text-slate-600">
+                  {highlight.description}
                 </CardContent>
               </Card>
             ))}
           </div>
-          <p className="text-xs text-gray-500 mt-4">
+        </div>
+      </section>
+
+      <section id="usecases" className="border-b border-border/60 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="grid gap-6 md:grid-cols-2 md:items-center">
+            <div>
+              <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Use cases</span>
+              <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">楽しむ人も、仕事にする人も</h2>
+              <p className="mt-3 text-base leading-relaxed text-slate-600">
+                目的別に最適なゴールを設定し、趣味の表現拡張から商業的な収益化まで伴走します。
+              </p>
+            </div>
+            <div className="grid gap-6">
+              {useCases.map((useCase) => (
+                <Card key={useCase.title} className="border-none bg-slate-50 shadow-md">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-slate-900">{useCase.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600">
+                      {useCase.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="border-b border-border/60 bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-col gap-3 text-center">
+            <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Pricing</span>
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">料金プラン</h2>
+            <p className="text-base leading-relaxed text-slate-600">目的とレベルに応じて3つのプランをご用意。</p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {plans.map((plan) => (
+              <Card key={plan.name} className="flex h-full flex-col border-none bg-white shadow-xl">
+                <CardHeader className="space-y-2">
+                  <div className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
+                    {plan.badge}
+                  </div>
+                  <CardTitle className="text-2xl text-slate-900">{plan.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-1 flex-col justify-between gap-6">
+                  <div className="space-y-4">
+                    <div>
+                      <div className="text-4xl font-extrabold text-slate-900">
+                        {plan.price}
+                        <span className="ml-1 text-base font-medium text-slate-500">（税込）</span>
+                      </div>
+                      <div className="mt-1 text-sm text-slate-500">{plan.duration}</div>
+                    </div>
+                    <ul className="space-y-2 text-sm leading-relaxed text-slate-600">
+                      {plan.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2">
+                          <CheckCircle2 className="mt-1 h-4 w-4 text-emerald-500" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Button className="w-full rounded-2xl">{plan.cta}</Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <p className="mt-6 text-xs text-slate-500">
             *国内初：当社調査。漫画制作に“完全特化”した体系的生成AIスクールとして。
           </p>
         </div>
       </section>
 
-      <section id="curriculum" className="border-t bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl md:text-3xl font-bold">カリキュラム（抜粋）</h2>
-          <div className="grid md:grid-cols-2 gap-6 mt-6">
+      <section id="curriculum" className="border-b border-border/60 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-col gap-3 text-center md:text-left">
+            <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Curriculum</span>
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">カリキュラム（抜粋）</h2>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {curriculum.map((module) => (
-              <Card key={module.title} className="rounded-2xl">
+              <Card key={module.title} className="border-none bg-slate-50 shadow-md">
                 <CardHeader>
-                  <CardTitle className="text-lg">{module.title}</CardTitle>
+                  <CardTitle className="text-lg text-slate-900">{module.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                  <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600">
                     {module.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
@@ -406,26 +485,24 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-3 gap-6 items-start">
-          <div className="col-span-1">
-            <h2 className="text-2xl md:text-3xl font-bold">講師・監修</h2>
-            <p className="mt-2 text-gray-600 text-sm">
-              現役プロ漫画家、編集経験者、法務（著作権）の専門家で編成。実践とコンプライアンスを両立。
+      <section className="border-b border-border/60 bg-slate-50">
+        <div className="mx-auto max-w-6xl gap-6 px-4 py-16 md:grid md:grid-cols-3 md:items-start">
+          <div className="md:col-span-1">
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">講師・監修</h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              現役プロ漫画家、編集経験者、法務（著作権）の専門家で編成。実践とコンプライアンスを両立します。
             </p>
           </div>
-          <Card className="rounded-2xl md:col-span-2">
-            <CardContent className="p-6 grid md:grid-cols-3 gap-4">
+          <Card className="md:col-span-2 border-none bg-white shadow-xl">
+            <CardContent className="grid gap-5 p-6 md:grid-cols-3">
               {[1, 2, 3].map((n) => (
-                <div key={n} className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-full bg-gray-100 border grid place-items-center">
-                    <Star className="w-5 h-5" />
+                <div key={n} className="flex items-center gap-3 rounded-2xl border border-dashed border-indigo-200/80 bg-indigo-50/60 p-4">
+                  <div className="grid h-14 w-14 place-items-center rounded-full bg-white text-indigo-500 shadow-inner">
+                    <Star className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="font-semibold">ゲスト講師 {n}</div>
-                    <div className="text-xs text-gray-500">
-                      商業連載/受託実績・AI×作画の第一人者
-                    </div>
+                    <div className="font-semibold text-slate-900">ゲスト講師 {n}</div>
+                    <div className="text-xs text-slate-500">商業連載/受託実績・AI×作画の第一人者</div>
                   </div>
                 </div>
               ))}
@@ -434,77 +511,110 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section id="apply" className="border-t bg-gradient-to-br from-indigo-50 to-cyan-50">
-        <div className="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <section id="apply" className="border-b border-border/60 bg-gradient-to-br from-indigo-50 via-white to-sky-50">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold">
+            <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Webinar</span>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
               無料ウェビナー：漫画×生成AIのはじめ方と活かし方
             </h2>
-            <ul className="mt-4 space-y-2 text-sm text-gray-700">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 mt-0.5" />
-                市場機会とポジショニング
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 mt-0.5" />
-                AI×作画ワークフロー実演
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 mt-0.5" />
-                著作権リスクの回避策
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 mt-0.5" />
-                受講後の収益化シナリオ
-              </li>
+            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-slate-600">
+              {webinarHighlights.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-1 h-4 w-4 text-emerald-500" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
-            <div className="mt-6 flex gap-3">
-              <Button size="lg" className="rounded-2xl">
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button size="lg" className="rounded-2xl px-6">
                 参加枠を確保
               </Button>
-              <Button variant="outline" size="lg" className="rounded-2xl">
+              <Button variant="outline" size="lg" className="rounded-2xl px-6">
                 カリキュラム資料を請求
               </Button>
             </div>
-            <p className="mt-3 text-xs text-gray-500">
-              ※日程は申込フォーム内で選択できます。
-            </p>
+            <p className="mt-3 text-xs text-slate-500">※日程は申込フォーム内で選択できます。</p>
           </div>
-          <Card className="rounded-2xl">
+          <Card className="border-none bg-white shadow-xl">
             <CardHeader>
-              <CardTitle className="text-lg flex items-center gap-2">
-                <MessageSquare className="w-5 h-5" /> 申込/資料請求フォーム（ダミー）
+              <CardTitle className="flex items-center gap-2 text-lg text-slate-900">
+                <MessageSquare className="h-5 w-5 text-indigo-600" /> 申込/資料請求フォーム（ダミー）
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="grid gap-3">
+              <form className="grid gap-4">
                 <Input placeholder="お名前" />
                 <Input type="email" placeholder="メールアドレス" />
                 <Input placeholder="ご希望プラン（例：ブートキャンプ）" />
                 <Textarea placeholder="ご要望／現在の課題" />
                 <Button className="rounded-2xl">送信する</Button>
-                <p className="text-xs text-gray-500">
-                  ※本フォームはデモです。実運用時はCRM/MAと連携します。
-                </p>
+                <p className="text-xs text-slate-500">※本フォームはデモです。実運用時はCRM/MAと連携します。</p>
               </form>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      <section className="border-t bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl md:text-3xl font-bold">よくある質問</h2>
-          <div className="mt-6 grid md:grid-cols-2 gap-6">
+      <section className="border-b border-border/60 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card className="border-none bg-slate-50 shadow-md">
+              <CardHeader>
+                <CardTitle className="text-lg text-slate-900">30日ローンチ計画</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600">
+                  {roadmap.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </CardContent>
+            </Card>
+            <Card className="border-none bg-slate-50 shadow-md">
+              <CardHeader>
+                <CardTitle className="text-lg text-slate-900">KPI（目標）</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm leading-relaxed text-slate-600">
+                  {kpis.map((kpi) => (
+                    <li key={kpi}>{kpi}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="border-none bg-slate-50 shadow-md">
+              <CardHeader>
+                <CardTitle className="text-lg text-slate-900">お問い合わせ</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-slate-600">
+                {contacts.map((contact) => (
+                  <div key={contact.text} className="flex items-center gap-2">
+                    <div className="grid h-8 w-8 place-items-center rounded-full bg-white text-indigo-500 shadow-inner">
+                      {contact.icon}
+                    </div>
+                    <span>{contact.text}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border/60 bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-16">
+          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">よくある質問</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
             {faqs.map((faq) => (
-              <Card key={faq.q} className="rounded-2xl">
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Sparkles className="w-5 h-5" />
+              <Card key={faq.q} className="border-none bg-white shadow-md">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-lg text-slate-900">
+                    <Sparkles className="h-5 w-5 text-indigo-600" />
                     {faq.q}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm text-gray-700 leading-relaxed">
+                <CardContent className="pt-0 text-sm leading-relaxed text-slate-600">
                   {faq.a}
                 </CardContent>
               </Card>
@@ -513,64 +623,19 @@ export default function MangaAISchoolLP() {
         </div>
       </section>
 
-      <section className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-3 gap-6">
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="text-lg">30日ローンチ計画</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ol className="list-decimal pl-5 text-sm text-gray-700 space-y-1">
-                <li>D1-10：講師契約・LMS/決済構築（MVP）</li>
-                <li>D11-20：教材制作・ウェビナー準備</li>
-                <li>D21-30：広告テスト→販売開始（M1：5件）</li>
-              </ol>
-            </CardContent>
-          </Card>
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="text-lg">KPI（目標）</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-1 text-sm text-gray-700">
-                <li>CPA：¥5,000 / CVR：4.0%</li>
-                <li>M3：月20件、M6：月30件</li>
-                <li>粗利率：80% / 年間利益率：75%+</li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle className="text-lg">お問い合わせ</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-gray-700">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4" /> contact@example.com
-              </div>
-              <div className="flex items-center gap-2 mt-2">
-                <Building2 className="w-4 h-4" /> 東京都〇〇区（登記予定）
-              </div>
-              <div className="flex items-center gap-2 mt-2">
-                <Laptop className="w-4 h-4" /> オンライン完結／全国対応
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <footer className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-10 text-xs text-gray-500 flex flex-col md:flex-row items-center justify-between gap-3">
+      <footer className="bg-slate-900 text-slate-100">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-10 text-xs md:flex-row">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4" />© 2025 Manga AI School
+            <Sparkles className="h-4 w-4" />© 2025 Manga AI School
           </div>
-          <div className="flex gap-4">
-            <a href="#" className="hover:underline">
+          <div className="flex gap-4 text-slate-300">
+            <a href="#" className="transition-colors hover:text-white">
               利用規約
             </a>
-            <a href="#" className="hover:underline">
+            <a href="#" className="transition-colors hover:text-white">
               プライバシー
             </a>
-            <a href="#" className="hover:underline">
+            <a href="#" className="transition-colors hover:text-white">
               特定商取引法に基づく表記
             </a>
           </div>
