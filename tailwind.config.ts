@@ -54,6 +54,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
+          "var(--font-inter)",
+          "var(--font-noto)",
           "Inter",
           "Noto Sans JP",
           "system-ui",
