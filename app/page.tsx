@@ -205,6 +205,30 @@ const heroMetrics = [
   },
 ] as const;
 
+const testimonials = [
+  {
+    name: "水瀬 柚葉",
+    role: "同人作家／縦読み作品を制作",
+    quote:
+      "これまで1話仕上げるのに3週間かかっていたのが、AIワークフロー導入で5日まで短縮。読者アンケートでも演出力が向上したと評価されました。",
+    result: "制作時間 -72% / ファンアート販売が即完売",
+  },
+  {
+    name: "Studio 88",
+    role: "制作会社／商業案件担当",
+    quote:
+      "講座で学んだプロンプト設計と品質チェックで、クライアントの修正回数が激減。社内ガイドラインの整備にも役立ちました。",
+    result: "案件リピート率 1.8倍／納期短縮 40%",
+  },
+  {
+    name: "綾瀬 弘斗",
+    role: "新人クリエイター／ポートフォリオ構築",
+    quote:
+      "AIの表現に頼りすぎず、自分の画風を活かすための補助線やネームの考え方まで指導してくれたのが決め手。編集部への持ち込みも通過しました。",
+    result: "週刊誌編集部の読み切り掲載が決定",
+  },
+] as const;
+
 const webinarHighlights = [
   "市場機会とポジショニング",
   "AI×作画ワークフロー実演",
@@ -275,8 +299,9 @@ export default function MangaAISchoolLP() {
 
       <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-60 mask-radial-fade" />
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute top-1/3 right-0 h-64 w-64 translate-x-1/3 rounded-full bg-cyan-200/30 blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-200/50 blur-3xl animate-pulse-slow" />
+        <div className="pointer-events-none absolute top-1/3 right-0 h-64 w-64 translate-x-1/3 rounded-full bg-cyan-200/40 blur-3xl animate-float" />
+        <div className="pointer-events-none absolute -bottom-24 left-16 hidden h-72 w-72 rounded-full bg-gradient-to-br from-violet-200/40 to-indigo-200/30 blur-3xl md:block" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -310,11 +335,17 @@ export default function MangaAISchoolLP() {
               </Button>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-600">
-              {heroBadges.map((badge) => (
-                <div key={badge} className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 shadow-sm">
+              {heroBadges.map((badge, index) => (
+                <motion.div
+                  key={badge}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
+                  className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 shadow-sm backdrop-blur"
+                >
                   <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                   <span>{badge}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -370,7 +401,7 @@ export default function MangaAISchoolLP() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.25 + index * 0.1 }}
-                  className="relative overflow-hidden rounded-2xl border border-white/30 bg-slate-900/95 text-white shadow-2xl"
+                  className="relative overflow-hidden rounded-2xl border border-white/30 bg-slate-900/95 text-white shadow-2xl glow-card"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${metric.gradient} opacity-90`} />
                   <div className="relative flex items-center justify-between gap-3 px-4 py-3">
@@ -404,9 +435,9 @@ export default function MangaAISchoolLP() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
             {features.map((feature) => (
-              <Card key={feature.title} className="h-full border-none bg-slate-50/80 shadow-md">
+              <Card key={feature.title} className="h-full border-none bg-white/80 shadow-lg ring-1 ring-slate-200/60 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <CardHeader className="flex flex-row items-center gap-3 pb-2">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-inner">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/15 to-cyan-400/20 text-indigo-600 shadow-inner">
                     {feature.icon}
                   </div>
                   <CardTitle className="text-base text-slate-900">{feature.title}</CardTitle>
@@ -425,9 +456,9 @@ export default function MangaAISchoolLP() {
         <div className="relative mx-auto max-w-6xl px-4 py-16">
           <div className="grid gap-8 md:grid-cols-3">
             {programHighlights.map((highlight) => (
-              <Card key={highlight.title} className="h-full border-none bg-white/90 shadow-lg">
+              <Card key={highlight.title} className="h-full border-none bg-white/90 shadow-lg ring-1 ring-slate-200/60 transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-xl">
                 <CardHeader className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/15 to-cyan-400/20 text-indigo-600">
                     {highlight.icon}
                   </div>
                   <CardTitle className="text-lg text-slate-900">{highlight.title}</CardTitle>
@@ -454,7 +485,7 @@ export default function MangaAISchoolLP() {
             </div>
             <div className="grid gap-6">
               {useCases.map((useCase) => (
-                <Card key={useCase.title} className="border-none bg-slate-50 shadow-md">
+                <Card key={useCase.title} className="border-none bg-slate-50/90 shadow-md ring-1 ring-slate-200/70">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg text-slate-900">{useCase.title}</CardTitle>
                   </CardHeader>
@@ -468,6 +499,43 @@ export default function MangaAISchoolLP() {
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="voices" className="relative border-b border-border/60 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-slate-100">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.25),_transparent_65%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16">
+          <div className="flex flex-col gap-4 text-center">
+            <span className="text-sm font-semibold uppercase tracking-wide text-indigo-300">Voices</span>
+            <h2 className="text-3xl font-bold md:text-4xl">受講生と導入企業の声</h2>
+            <p className="text-base leading-relaxed text-slate-300">
+              実際に生成AIを活用した漫画制作に踏み出したクリエイターや企業の事例をご紹介します。
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <Card
+                key={testimonial.name}
+                className="relative h-full border-none bg-white/5 p-[1px] shadow-xl transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
+              >
+                <div className="rounded-[1.4rem] bg-slate-900/80 p-6 backdrop-blur">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">{testimonial.name}</h3>
+                      <p className="text-xs uppercase tracking-wide text-indigo-200/80">{testimonial.role}</p>
+                    </div>
+                    <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-indigo-500/20 to-cyan-400/30 text-indigo-100">
+                      <Sparkles className="h-5 w-5" />
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-100/90">{testimonial.quote}</p>
+                  <div className="mt-5 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-indigo-100">
+                    {testimonial.result}
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

@@ -54,4 +54,53 @@
     mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
     -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
   }
+
+  .glow-card {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .glow-card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, rgba(99, 102, 241, 0.35), rgba(34, 211, 238, 0.35));
+    opacity: 0;
+    filter: blur(16px);
+    transition: opacity 0.4s ease;
+    z-index: -1;
+  }
+
+  .glow-card:hover::after {
+    opacity: 1;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-12px) scale(1.02);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-float {
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseGlow 8s ease-in-out infinite;
+  }
 }
