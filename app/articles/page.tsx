@@ -9,25 +9,36 @@ type Article = {
   title: string;
 };
 
+export const runtime = "nodejs";
+
 function getArticles(): Article[] {
   const articlesDir = path.join(process.cwd(), "public", "articles");
-  const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
+  if (!fs.existsSync(articlesDir)) {
+    return [];
+  }
 
-  return entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
-    .map((entry) => {
-      const slug = entry.name;
-      const title = entry.name
-        .replace(/\.html$/i, "")
-        .replace(/[_-]+/g, " ")
-        .replace(/\b([a-z])/g, (match) => match.toUpperCase());
+  try {
+    const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
 
-      return {
-        href: `/articles/${slug}`,
-        title,
-      };
-    })
-    .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+    return entries
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
+      .map((entry) => {
+        const slug = entry.name;
+        const title = entry.name
+          .replace(/\.html$/i, "")
+          .replace(/[_-]+/g, " ")
+          .replace(/\b([a-z])/g, (match) => match.toUpperCase());
+
+        return {
+          href: `/articles/${slug}`,
+          title,
+        };
+      })
+      .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+  } catch (error) {
+    console.error("Failed to read articles directory", error);
+    return [];
+  }
 }
 
 export const metadata: Metadata = {

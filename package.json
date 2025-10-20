@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
-    "vercel-build": "next build"
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
