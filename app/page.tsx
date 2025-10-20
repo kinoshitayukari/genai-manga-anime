@@ -267,6 +267,12 @@ const kpis = [
   "粗利率：80% / 年間利益率：75%+",
 ] as const;
 
+const ctaPoints = [
+  "ライブ添削とSlack/Discordでの24時間サポート",
+  "商業レベルの作品集と収益化導線を構築",
+  "著作権・法務・営業までワンストップで習得",
+] as const;
+
 const contacts = [
   { icon: <Mail className="h-4 w-4" />, text: "contact@example.com" },
   { icon: <Building2 className="h-4 w-4" />, text: "東京都〇〇区（登記予定）" },
@@ -750,6 +756,45 @@ export default function MangaAISchoolLP() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative border-b border-border/60 bg-gradient-to-br from-indigo-600 via-indigo-500 to-slate-900 text-white">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.2),_transparent_70%)]" />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.2fr,0.8fr] md:items-center">
+          <div className="space-y-5">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+              <Sparkles className="h-3.5 w-3.5" /> Ready to start?
+            </span>
+            <h2 className="text-3xl font-bold md:text-4xl">
+              漫画×生成AIで、あなたの制作フローを次のレベルへ。
+            </h2>
+            <p className="text-base leading-relaxed text-white/85">
+              ネーム構築から仕上げ、事業化までを短期集中で体系化。成果保証付きのカリキュラムで、最短距離のキャリアを設計しましょう。
+            </p>
+            <div className="grid gap-3 text-sm text-white/85 md:grid-cols-2">
+              {ctaPoints.map((point) => (
+                <div key={point} className="flex items-start gap-2 rounded-2xl bg-white/10 p-3 backdrop-blur">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-200" />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-4 rounded-3xl border border-white/25 bg-white/10 p-6 shadow-2xl backdrop-blur">
+            <h3 className="text-xl font-semibold">無料ウェビナーで体験する</h3>
+            <p className="text-sm leading-relaxed text-white/85">
+              カリキュラムの一部をライブで公開し、あなたの制作課題に合わせたAI活用プランを個別に提案します。
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button size="lg" className="rounded-2xl bg-white text-indigo-600 hover:bg-white/90">
+                無料ウェビナーを予約
+              </Button>
+              <Button variant="outline" size="lg" className="rounded-2xl border-white/60 text-white hover:bg-white/10">
+                カリキュラム資料を請求
+              </Button>
+            </div>
           </div>
         </div>
       </section>
