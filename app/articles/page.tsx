@@ -19,38 +19,56 @@ function getArticles(): Article[] {
     return [];
   }
 
+  const collectArticles = (relativeDir = ""): Article[] => {
+    const currentDir = path.join(articlesDir, relativeDir);
+    let results: Article[] = [];
+
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const relativePath = path.join(relativeDir, entry.name);
+
+      if (entry.isDirectory()) {
+        results = results.concat(collectArticles(relativePath));
+        continue;
+      }
+
+      if (!entry.isFile() || !entry.name.toLowerCase().endsWith(".html")) {
+        continue;
+      }
+
+      const slug = relativePath.replace(/\\/g, "/");
+      const articlePath = path.join(articlesDir, slug);
+      const fileContents = fs.readFileSync(articlePath, "utf-8");
+
+      const h1Match = fileContents.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+      const rawTitle = h1Match?.[1] ?? "";
+      const title = rawTitle
+        .replace(/<[^>]+>/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      const slugWithoutExt = slug.replace(/\.html$/i, "");
+      const slugBaseName = path.basename(slugWithoutExt);
+      const imageFolder = path.join(articlesDir, `images_${slugBaseName}`);
+      const imageFileName = "タイトル（H1）_1.png";
+      const imagePath = path.join(imageFolder, imageFileName);
+      const imageSrc = fs.existsSync(imagePath)
+        ? `/articles/images_${slugBaseName}/${imageFileName}`
+        : null;
+
+      results.push({
+        href: `/articles/${slug}`,
+        title: title || slugBaseName,
+        imageSrc,
+      });
+    }
+
+    return results;
+  };
+
   try {
-    const entries = fs.readdirSync(articlesDir, { withFileTypes: true });
-
-    return entries
-      .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
-      .map((entry) => {
-        const slug = entry.name;
-        const articlePath = path.join(articlesDir, slug);
-        const fileContents = fs.readFileSync(articlePath, "utf-8");
-
-        const h1Match = fileContents.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
-        const rawTitle = h1Match?.[1] ?? "";
-        const title = rawTitle
-          .replace(/<[^>]+>/g, "")
-          .replace(/\s+/g, " ")
-          .trim();
-
-        const slugWithoutExt = slug.replace(/\.html$/i, "");
-        const imageFolder = path.join(articlesDir, `images_${slugWithoutExt}`);
-        const imageFileName = "タイトル（H1）_1.png";
-        const imagePath = path.join(imageFolder, imageFileName);
-        const imageSrc = fs.existsSync(imagePath)
-          ? `/articles/images_${slugWithoutExt}/${imageFileName}`
-          : null;
-
-        return {
-          href: `/articles/${slug}`,
-          title: title || slugWithoutExt,
-          imageSrc,
-        };
-      })
-      .sort((a, b) => a.title.localeCompare(b.title, "ja"));
+    return collectArticles().sort((a, b) => a.title.localeCompare(b.title, "ja"));
   } catch (error) {
     console.error("Failed to read articles directory", error);
     return [];
