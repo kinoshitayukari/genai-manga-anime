@@ -36,188 +36,221 @@ const navItems = [
 
 const features = [
   {
+    icon: <Sparkles className="h-6 w-6 text-indigo-600" />,
+    title: "Gemini NanoBanana特化",
+    desc: "最新Geminiモデルに最適化した生成設定・制御ノウハウを体系化。安定したキャラ・背景統一を実現。",
+  },
+  {
     icon: <Brush className="h-6 w-6 text-indigo-600" />,
-    title: "漫画×AIに完全特化",
-    desc: "国内初*の漫画制作特化AIカリキュラム。技術×作画×演出を統合。",
+    title: "プロンプトだけで世界観統一",
+    desc: "LoRA調整に頼らず、プロンプト設計と否定プロンプトでキャラ軸・光・色温度をコントロール。",
   },
   {
-    icon: <Zap className="h-6 w-6 text-indigo-600" />,
-    title: "制作時間 80%削減",
-    desc: "ワークフロー最適化でネーム→仕上げまで高速化。",
-  },
-  {
-    icon: <ShieldCheck className="h-6 w-6 text-indigo-600" />,
-    title: "著作権・コンプラ対応",
-    desc: "専門家監修の最新ガイドラインを提供。安心して商用へ。",
+    icon: <PlayCircle className="h-6 w-6 text-indigo-600" />,
+    title: "Webtoon×YouTube両対応",
+    desc: "縦読み連載とショート動画漫画の演出テンプレを提供。作品活用の導線まで設計できます。",
   },
   {
     icon: <LineChart className="h-6 w-6 text-indigo-600" />,
-    title: "収益化に直結",
-    desc: "案件獲得・連載提案・同人/Booth/海外展開まで戦略設計。",
+    title: "API自動化で一発生成",
+    desc: "Gemini API・Flask UI・自動連結スクリプトで1クリック出力まで構築。業務導入にもそのまま転用。",
   },
 ] as const;
 
 const programHighlights = [
   {
     icon: <GraduationCap className="h-5 w-5 text-indigo-600" />,
-    title: "成果保証型",
+    title: "世界観プロンプトラボ",
     description:
-      "商業レベルの作品集制作をコミット。修了基準を明確化し、未達時の再受講サポートを用意。",
+      "キャラ設定・背景・ライティングを一貫させるプロンプト分解ワーク。NanoBanana特有の癖も共有。",
   },
   {
     icon: <Users className="h-5 w-5 text-indigo-600" />,
-    title: "現役プロの直接指導",
+    title: "ライブ演出添削",
     description:
-      "少人数ライブ添削とSlack/Discordでの常時フィードバック。作品の魅せ方まで徹底伴走。",
+      "縦スク演出やテンポを講師がリアルタイムでレビュー。YouTube漫画の尺設計も個別指導。",
   },
   {
     icon: <TimerReset className="h-5 w-5 text-indigo-600" />,
-    title: "8〜12週間で実務化",
+    title: "API自動化ハンズオン",
     description:
-      "ネーム・演出・仕上げ・法務・営業を短期集中的に統合。即戦力スキルを獲得します。",
+      "Gemini API×Flask×Pillow×CapCutテンプレを実装。1話自動生成パイプラインを構築します。",
   },
 ] as const;
 
 const plans = [
   {
-    name: "プロフェッショナル・ブートキャンプ",
-    price: "¥498,000",
-    badge: "最短で商業レベルへ",
-    duration: "8週間／少人数・現役プロ指導",
+    name: "無料講座：Geminiイントロ",
+    price: "¥0",
+    badge: "まずは理解から",
+    duration: "記事＋YouTube全5本",
     points: [
-      "商業クオリティの作品集を完成",
-      "演出・構図・コマ割りの徹底添削",
-      "AI×作画の最適ハイブリッド",
-      "エージェント・編集向け提案資料作成",
+      "Geminiで始めるAI漫画革命",
+      "プロンプトだけでキャラを統一する方法",
+      "縦読み構成とテンポの黄金比",
+      "Gemini×吹き出しUIで仕上げる",
     ],
-    cta: "優先枠を予約",
+    cta: "無料で学ぶ",
   },
   {
-    name: "スタンダード・ワークフローコース",
-    price: "¥298,000",
-    badge: "基礎〜実務の土台",
-    duration: "12週間／動画＋ライブQA",
+    name: "AI Webtoon Lab PRO",
+    price: "¥49,800",
+    badge: "API自動化パイプライン",
+    duration: "全8回＋自動化コード",
     points: [
-      "AI基本操作と作画フロー確立",
-      "ネーム→清書→仕上げテンプレート",
-      "法務・リスクとベストプラクティス",
-      "収益化の初手（同人/受託/短編）",
+      "Gemini画像・台本自動生成",
+      "Flask×Pillow吹き出しUI",
+      "縦連結＆動画化スクリプト",
+      "YouTube Data API投稿自動化",
     ],
-    cta: "申込する",
+    cta: "PROに参加",
   },
   {
-    name: "企業向けカスタマイズ研修",
-    price: "¥500,000〜",
-    badge: "制作現場の生産性を加速",
-    duration: "1〜2日集中／現場課題に最適化",
+    name: "継続コミュニティ",
+    price: "月¥1,980",
+    badge: "アップデート共有",
+    duration: "Discord／Notion運営",
     points: [
-      "制作時間短縮の標準ワークフロー設計",
-      "著作権・社内ガイドライン策定",
-      "プロンプト資産・スタイル資産の設計",
-      "ナレッジ管理と内製化の仕組み",
+      "Q&A・作品レビュー",
+      "プロンプト辞書アップデート",
+      "最新テンプレ配布",
+      "収益化ケーススタディ",
     ],
-    cta: "相談する",
+    cta: "参加を申し込む",
   },
 ] as const;
 
 const curriculum = [
   {
-    title: "基礎：AI作画エンジン理解",
+    title: "第1回 市場理解と企画設計",
     bullets: [
-      "拡散/視覚言語モデルの基礎と限界",
-      "プロンプト設計・否定プロンプト",
-      "画風スタイルの再現と著作権配慮",
+      "WebtoonとYouTube漫画の最新トレンド分析",
+      "視聴維持率を高める縦スク構成テンポ",
+      "講座内での作品テーマ企画ワーク",
     ],
   },
   {
-    title: "実践：ワークフロー構築",
+    title: "第2回 Gemini生成の基本",
     bullets: [
-      "ネーム→ラフ→線画→仕上げの最短動線",
-      "背景/小物/トーンの自動化",
-      "ページ組版・縦スク/横読みの最適化",
+      "NanoBanana設定と画角・比率のコントロール",
+      "キャラ軸固定のためのシード・タグ管理",
+      "否定プロンプトとスタイル制御",
     ],
   },
   {
-    title: "演出：読ませる技術",
+    title: "第3回 キャラクターデザイン",
     bullets: [
-      "カメラワーク・コマ割り・間の設計",
-      "キャラ感情の視線誘導",
-      "セリフ最適化×吹き出し配置",
+      "顔・服・配色の一貫性を保つプロンプト分解",
+      "世界観辞書の作成と共有ライブラリ化",
+      "表情差分とアングルのテンプレ作成",
     ],
   },
   {
-    title: "事業化：収益と拡張",
+    title: "第4回 背景・トーン設計",
     bullets: [
-      "作品集とポートフォリオの勝ちパターン",
-      "編集/クライアント向け提案書テンプレ",
-      "同人/連載/受託/海外販路の戦略",
+      "光・色温度を統一するサンプル提示",
+      "構図・レイヤー管理と連番生成",
+      "背景プロンプトと素材整理術",
+    ],
+  },
+  {
+    title: "第5回 縦読み構成と演出",
+    bullets: [
+      "間・落差・視線誘導の黄金パターン",
+      "スクロールリズムを意識したページ設計",
+      "YouTube転用のための尺換算",
+    ],
+  },
+  {
+    title: "第6回 セリフ・ナレーション",
+    bullets: [
+      "Gemini／ChatGPTで台本・セリフ生成",
+      "吹き出し配置と自動レイアウトの最適化",
+      "翻訳・多言語展開のワークフロー",
+    ],
+  },
+  {
+    title: "第7回 出力と動画化",
+    bullets: [
+      "Canva／CapCutでの縦漫画動画化",
+      "AI音声ナレーションとSE挿入",
+      "SNS・YouTube向けフォーマット出力",
+    ],
+  },
+  {
+    title: "第8回 投稿と収益化",
+    bullets: [
+      "YouTube・LINE漫画の投稿戦略",
+      "チャンネル設計と更新オペレーション",
+      "作品解析と継続改善の指標管理",
     ],
   },
 ] as const;
 
 const useCases = [
   {
-    title: "① クリエイティブを楽しむ（非商用）",
+    title: "① 個人クリエイター・副業",
     bullets: [
-      "オリジナル世界観の構築と連作づくり",
-      "縦読み/横読みの最適化テンプレ",
-      "SNS公開のコツと継続の仕組み化",
+      "Geminiテンプレで毎週更新できる仕組み化",
+      "SNS縦読み＆YouTubeショートのクロス投稿",
+      "ファン化→有料講座・グッズ導線の構築",
     ],
   },
   {
-    title: "② 商業利用で利益を得る（収益化）",
+    title: "② チーム・スタジオ導入",
     bullets: [
-      "受託制作/案件獲得のフロー設計",
-      "同人・デジタル販売/Booth展開",
-      "連載提案・編集向け資料の作成",
-      "原価圧縮と利益率向上のワークフロー",
+      "APIパイプラインで制作を自動化",
+      "役割分担とNotion進行管理のベストプラクティス",
+      "投稿〜収益化のデータ連携テンプレ",
     ],
   },
 ] as const;
 
 const heroBadges = [
-  "制作時間 最大80%削減",
-  "著作権ガイド付",
-  "商業レベル作品集を完成",
-  "商業利用・副業の収益化支援",
+  "Gemini NanoBanana特化",
+  "プロンプトだけで統一世界観",
+  "APIテンプレート付属",
+  "縦読み＆動画化ワークフロー",
 ] as const;
 
 const webinarHighlights = [
-  "市場機会とポジショニング",
-  "AI×作画ワークフロー実演",
-  "著作権リスクの回避策",
-  "受講後の収益化シナリオ",
+  "Geminiでキャラと背景を揃える手順",
+  "縦読みネームのテンポ設計ライブ解説",
+  "無料→PROへの導線設計と収益化ケース",
+  "API自動化デモと導入ステップ",
 ] as const;
 
 const faqs = [
   {
-    q: "どのAIツールに対応していますか？",
-    a: "主要な画像/動画生成、補正、レイアウト系（例：Midjourney, Stable系, Adobe系, Animate系, 吹き出し自動化など）に加え、学習の進捗に応じて推奨スタックを提示します。環境差分を吸収するためのワークフローテンプレも付属。",
+    q: "Gemini以外のモデルは扱いますか？",
+    a: "本講座はGemini（NanoBanana）に最適化されていますが、Stable Diffusionや他モデルへの転用ポイントも補足資料で解説します。",
   },
   {
-    q: "著作権は大丈夫？",
-    a: "既存作品や固有キャラクターの模倣・混同を避ける運用設計、学習素材の権利確認、出力のオリジナリティ担保など、専門家監修のガイドラインを提供。実務シーン別のチェックリストも配布します。",
+    q: "プログラミング未経験でもAPI自動化は可能？",
+    a: "はい。Flask UIやPillow処理はテンプレコードを配布し、ハンズオンでステップ解説します。コピー＆調整だけで1話自動生成が完成します。",
   },
   {
-    q: "受講に必要なPCスペックは？",
-    a: "クラウド中心の構成でミドルレンジでも可。ローカル高負荷を避ける設計例と代替手段（レンダリング/アップスケールの外部委託）を併記します。",
+    q: "商用利用や著作権面のリスクは？",
+    a: "Gemini利用規約や国内外プラットフォームの投稿基準を整理したチェックリストを提供し、安全な運用方法を学びます。",
   },
   {
-    q: "未経験でも参加できますか？",
-    a: "はい。基礎デッサンの補助教材、作画テンプレ、参考ネーム集を提供。スタンダードコースからの開始を推奨します。",
+    q: "無料パートだけでも学べますか？",
+    a: "無料講座でプロンプト設計と縦読み構成の基礎を習得できます。さらにAPI自動化まで進めたい方はPRO講座をご活用ください。",
   },
 ] as const;
 
 const roadmap = [
-  "D1-10：講師契約・LMS/決済構築（MVP）",
-  "D11-20：教材制作・ウェビナー準備",
-  "D21-30：広告テスト→販売開始（M1：5件）",
+  "ステップ1：無料講座・記事でファン化",
+  "ステップ2：ウェビナー→PRO講座の導線構築",
+  "ステップ3：受講者作品をYouTubeで公開",
+  "ステップ4：コミュニティ継続でアップセル",
 ] as const;
 
 const kpis = [
-  "CPA：¥5,000 / CVR：4.0%",
-  "M3：月20件、M6：月30件",
-  "粗利率：80% / 年間利益率：75%+",
+  "無料講座登録：月300件",
+  "PRO講座成約率：8%以上",
+  "受講者作品公開：月10本",
+  "コミュニティ継続率：85%",
 ] as const;
 
 const contacts = [
@@ -233,7 +266,7 @@ export default function MangaAISchoolLP() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-indigo-600">
             <Sparkles className="h-5 w-5" />
-            <span>漫画特化AIスクール</span>
+            <span>AI Webtoon Lab</span>
           </div>
           <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
             {navItems.map((item) => (
@@ -256,19 +289,18 @@ export default function MangaAISchoolLP() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-600 shadow-sm ring-1 ring-indigo-500/10">
-              <Sparkles className="h-3.5 w-3.5" /> Manga × Generative AI
+              <Sparkles className="h-3.5 w-3.5" /> AI Webtoon Lab
             </span>
             <h1 className="mt-4 text-3xl font-extrabold leading-tight text-slate-900 md:text-5xl">
-              あなたの「描きたい」に寄り添う：
-              <span className="rounded bg-yellow-200 px-2">漫画×生成AI</span>
-              で
+              AI Webtoon Lab：
+              <span className="rounded bg-yellow-200 px-2">Geminiでつくる縦読みマンガ講座</span>
               <br className="hidden md:block" />
-              楽しむ人も、仕事にする人も、
-              <span className="underline decoration-wavy decoration-indigo-400">最短</span>
-              で前へ。
+              プロンプト一発でキャラも背景も統一し、
+              <span className="underline decoration-wavy decoration-indigo-400">世界観を量産</span>
+              する。
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-slate-600">
-              国内初*の「漫画制作に完全特化」した生成AIスクール。現役プロの監修で、ネームから仕上げ、収益化戦略までを一気通貫で習得します。
+              Gemini（NanoBanana）特化のプロンプト設計と世界観構築、API自動化までを8回で習得。LoRA不要で統一感あるWebtoon／YouTube漫画をワンクリック生成できるパイプラインを構築します。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-2xl px-6">
@@ -311,9 +343,9 @@ export default function MangaAISchoolLP() {
               </div>
               <div className="flex flex-col gap-4 text-sm text-slate-600">
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">AI×作画ワークフロー可視化</h3>
+                  <h3 className="text-base font-semibold text-slate-900">Gemini Webtoonパイプライン</h3>
                   <p className="mt-1 leading-relaxed">
-                    ネーム→ラフ→線画→仕上げの自動化ポイントを、プロジェクトボード形式で学習。
+                    プロンプト設計→生成→吹き出し→縦連結→動画化までの自動化ポイントを共有。
                   </p>
                 </div>
                 <div className="grid gap-3 rounded-2xl bg-slate-50/80 p-4 shadow-inner">
@@ -337,7 +369,7 @@ export default function MangaAISchoolLP() {
                   </div>
                 </div>
                 <div className="rounded-2xl border border-dashed border-indigo-200/70 bg-white/60 p-4 text-xs leading-relaxed text-slate-500">
-                  AI補助の推奨モデル、否定プロンプト例、著作権チェックリストなどをテンプレ化。受講者は自分のワークフローに転用可能です。
+                  Geminiプロンプト辞書、縦連結スクリプト、YouTube投稿チェックリストを配布。講座後も自走できるテンプレ群です。
                 </div>
               </div>
             </div>
@@ -349,9 +381,9 @@ export default function MangaAISchoolLP() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-col gap-3 text-center md:text-left">
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Why now</span>
-            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">なぜ今、漫画×生成AIなのか</h2>
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Geminiで縦読み漫画を量産する理由</h2>
             <p className="text-base leading-relaxed text-slate-600">
-              市場拡大と制作現場の効率化ニーズが交差。先発優位を確立するための知識と仕組みを体系化しました。
+              LoRA調整不要で統一世界を生成できるGeminiが台頭。企画〜自動化までを結ぶ新しいワークフローを学ぶ絶好のタイミングです。
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
@@ -397,9 +429,9 @@ export default function MangaAISchoolLP() {
           <div className="grid gap-6 md:grid-cols-2 md:items-center">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Use cases</span>
-              <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">楽しむ人も、仕事にする人も</h2>
+              <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">個人もチームもGeminiで量産</h2>
               <p className="mt-3 text-base leading-relaxed text-slate-600">
-                目的別に最適なゴールを設定し、趣味の表現拡張から商業的な収益化まで伴走します。
+                創作を楽しむ個人から制作スタジオまで、プロンプト資産と自動化パイプラインで継続的に作品を届けられる体制を作ります。
               </p>
             </div>
             <div className="grid gap-6">
@@ -426,8 +458,8 @@ export default function MangaAISchoolLP() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-col gap-3 text-center">
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Pricing</span>
-            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">料金プラン</h2>
-            <p className="text-base leading-relaxed text-slate-600">目的とレベルに応じて3つのプランをご用意。</p>
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">無料からAPI自動化まで</h2>
+            <p className="text-base leading-relaxed text-slate-600">導線設計を学ぶ無料講座から、1クリック生成を叶えるPRO講座、継続アップデートのコミュニティまで用意しました。</p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {plans.map((plan) => (
@@ -523,7 +555,7 @@ export default function MangaAISchoolLP() {
           <div>
             <span className="text-sm font-semibold uppercase tracking-wide text-indigo-600">Webinar</span>
             <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
-              無料ウェビナー：漫画×生成AIのはじめ方と活かし方
+              無料ウェビナー：Geminiで縦読み漫画を一発生成
             </h2>
             <ul className="mt-6 space-y-3 text-sm leading-relaxed text-slate-600">
               {webinarHighlights.map((item) => (
@@ -568,7 +600,7 @@ export default function MangaAISchoolLP() {
           <div className="grid gap-6 md:grid-cols-3">
             <Card className="border-none bg-slate-50 shadow-md">
               <CardHeader>
-                <CardTitle className="text-lg text-slate-900">30日ローンチ計画</CardTitle>
+                <CardTitle className="text-lg text-slate-900">マーケティング導線</CardTitle>
               </CardHeader>
               <CardContent>
                 <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600">
